@@ -10,7 +10,7 @@ help:
 ## printt vars
 ## 	HOGE:	printf する文字列
 ## 	PIYO:	printf する文字列
-.PHONY: ptint_hoge_piyo_env
-ptint_hoge_piyo_env:
+.PHONY: print_hoge_piyo_env
+print_hoge_piyo_env:
 	@printf "hoge: ${HOGE}\n"
 	@printf "piyo: ${PIYO}\n"

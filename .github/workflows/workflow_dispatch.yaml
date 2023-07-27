@@ -20,7 +20,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
+      - uses: actions/checkout@v3
       - name: print HOGE PIYO env
-        run: for s in (${${{ inputs.var_first }}//,/ }); do HOGE=${s} make print_hoge_piyo_env; done
+        run: |
+          var_first=${{ inputs.var_first }}
+          arr=(${var_first//,/ })
+          for s in "${arr[@]}"; do HOGE=${s} make print_hoge_piyo_env; done
         env:
           PIYO: ${{ inputs.var_second }}
