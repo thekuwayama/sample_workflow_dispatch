@@ -1,0 +1,26 @@
+name: sample CI
+
+on:
+  workflow_dispatch:
+    inputs:
+      var_first:
+        description: 'カンマ区切りの文字列'
+        required: true
+        type: string
+      var_second:
+        description: '文字列'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: print HOGE PIYO env
+        run: for s in (${${{ inputs.var_first }}//,/ }); do HOGE=${s} make print_hoge_piyo_env; done
+        env:
+          PIYO: ${{ inputs.var_second }}
