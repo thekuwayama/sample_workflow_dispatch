@@ -23,8 +23,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: print HOGE PIYO env
         run: |
-          var_first=${{ inputs.var_first }}
-          arr=(${var_first//,/ })
-          for s in "${arr[@]}"; do HOGE=${s} make print_hoge_piyo_env; done
+          VAR_FIRST="${{ inputs.var_first }}"
+          IFS=, ARR=(${VAR_FIRST})
+          for s in "${ARR[@]}"; do HOGE=${s} make print_hoge_piyo_env; done
         env:
           PIYO: ${{ inputs.var_second }}
