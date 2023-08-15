@@ -25,6 +25,6 @@ jobs:
         run: |
           VAR_FIRST="${{ inputs.var_first }}"
           IFS=, ARR=(${VAR_FIRST})
-          for s in "${ARR[@]}"; do HOGE=${s} make print_hoge_piyo_env; done
+          for s in "${ARR[@]}"; do echo ${s}; done
         env:
           PIYO: ${{ inputs.var_second }}
